@@ -22,7 +22,7 @@ export type TFormContext = {
   setFormData: Dispatch<SetStateAction<TTicketDetails>>,
   errors: TErrors,
   setErrors: Dispatch<SetStateAction<TErrors>>,
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>
+  handleChange: (e: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>
 ) => void,
   reset: () => void
 }
