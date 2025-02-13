@@ -1,6 +1,6 @@
 import FirstForm from "./FirstForm.tsx";
 
-export default function TicketSelection({ setTab }){
+export default function TicketSelection({ setTab } : { setTab: (i: number) => void }){
   return (
     <>
     <section className="hidden lg:block flex flex-col space-y-[32px] p-[24px] bg-[#08252b] border-[1px] border-[#0e464f] rounded-[32px]">

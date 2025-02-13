@@ -2,16 +2,17 @@ import { useContext, useState, useRef } from "react";
 import { FormContext } from "../contexts/FormContext";
 import { IoIosWarning } from "react-icons/io";
 import { FaCheckSquare, FaCloudUploadAlt } from "react-icons/fa";
+import { TTicketDetails } from "../types/";
 
-export default function AttendeeDetails({ setTab }){
+export default function AttendeeDetails({ setTab }: { setTab: (e: number) => void }){
   const { formData, handleChange, errors, setErrors, setFormData } = useContext(FormContext);
   const [loading, setLoading] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
-  const uploadImage = async (file) => {
+  const uploadImage = async (file: File) => {
     setLoading(true);
     setErrors({...errors, picture: ""});
 
@@ -48,7 +49,7 @@ export default function AttendeeDetails({ setTab }){
   };
 
   // Handle file drop
-  const handleDrop = (e) => {
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDragging(false);
     const file = e.dataTransfer.files[0];
@@ -59,10 +60,10 @@ export default function AttendeeDetails({ setTab }){
     }
   };
 
-  const validate = (values) => {
+  const validate = (values: TTicketDetails) => {
     let errors = {};
     Object.keys(values).map(val => {
-      if(values[val].length <= 0 && val !== "request"){
+      if((values[val as keyof TTicketDetails]as string).length <= 0 && val !== "request"){
         errors = { ...errors, [val]: `Please provide your ${val}` };
       }
     })
@@ -72,9 +73,9 @@ export default function AttendeeDetails({ setTab }){
 
   const handleSave = () => {
     const errs = validate(formData);
-    setErrors({ ...errs })
+    setErrors({ ...errors, ...errs })
     if(!errs){
-      const savedInfo = localStorage.getItem('tickets') ? JSON.parse(localStorage.getItem('tickets')) : [];
+      const savedInfo = localStorage.getItem('tickets') ? JSON.parse(localStorage.getItem('tickets') as string) : [];
       
       savedInfo.push(formData);
 
@@ -91,10 +92,10 @@ export default function AttendeeDetails({ setTab }){
       <div className="flex flex-col gap-[32px] py-[16px] px-[24px] md:pt-[24px] md:pb-[48px] rounded-[24px] border-[1px] border-[#07373f] bg-[#052228] justify-between">
         <h3 className="text-[16px] leading-[150%] text-[#fafafa] roboto">Upload Profile Photo</h3>
         <div className="flex gap-[10px] text-center items-center justify-center h-[200px] bg-[#00000033] relative">
-          <div className="absolute w-[240px] h-[240px] flex flex-col gap-[16px] p-[24px] rounded-[32px] bg-[#0e464f] border-[#24a0b580] border-[4px] items-center justify-center cursor-pointer bg-[]"         
+          <div className={`absolute w-[240px] h-[240px] flex flex-col gap-[16px] p-[24px] rounded-[32px] bg-[#0e464f] border-[#24a0b580] border-[4px] items-center justify-center cursor-pointer ${isDragging && 'bg-[#0a3137]'}`}         
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
-        onClick={() => fileInputRef.current.click()}
+        onClick={() => (fileInputRef.current as HTMLInputElement).click()}
         >
           { (!loading && (!formData.picture) ) ? (
             <>
@@ -116,7 +117,10 @@ export default function AttendeeDetails({ setTab }){
               type="file"
               ref={fileInputRef}
               accept="image/*"
-              onChange={(e) => uploadImage(e.target.files[0])}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) uploadImage(file);
+              }}
               className="hidden"
             />
           </div>

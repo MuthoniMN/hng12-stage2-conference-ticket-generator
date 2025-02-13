@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { TTicketDetails } from "../types/";
 
 export default function SavedDetails(){
-  const [ticket, setTicket] = useState<TTicketDetails>({});
+  const [ticket, setTicket] = useState<TTicketDetails>({} as TTicketDetails);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('recent'));
+    const saved = JSON.parse(localStorage.getItem('recent') as string);
 
     setTicket(saved);
   }, [])

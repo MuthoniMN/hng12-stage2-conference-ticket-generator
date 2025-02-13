@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction  } from "react";
 
 export type TTicketDetails = {
-  type: string,
-  quantity: number,
-  name: string,
-  picture: string,
-  email: string,
-  request?: string
+  'type': string,
+  'quantity': number,
+  'name': string,
+  'picture': string,
+  'email': string,
+  'request'?: string
 }
 
 export type TErrors = {

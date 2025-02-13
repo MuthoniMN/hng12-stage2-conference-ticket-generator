@@ -1,8 +1,9 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { IoIosWarning } from "react-icons/io";
 import { FormContext } from "../contexts/FormContext";
+import { TErrors } from "../types/";
 
-export default function FirstForm({ setTab, hide=false }){
+export default function FirstForm({ setTab, hide=false } : { setTab: (i: number) => void, hide?: boolean }){
   const { errors, setErrors, formData, setFormData, reset, handleChange } = useContext(FormContext);
 
   const chooseType = (type: string) => {
@@ -16,7 +17,7 @@ export default function FirstForm({ setTab, hide=false }){
   }
 
   const next = () => {
-    setErrors({});
+    setErrors({} as TErrors);
     if(!formData.type){
       setErrors({...errors, type: "Please select a ticket type"})
     } 

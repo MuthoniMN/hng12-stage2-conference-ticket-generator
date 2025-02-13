@@ -4,7 +4,7 @@ import Bars from './Bars';
 import SavedDetails from './SavedDetails';
 import BarCode from "./BarCode";
 
-export default function Ready({ setTab }){
+export default function Ready({ setTab } : { setTab: (i: number) => void }){
   return (
     <section className="relative top-0 md:top-[-54px] lg:top-[-124px] w-[90%] max-w-[700px] flex flex-col gap-[32px] px-[24px] py-[32px] lg:p-[48px] rounded-[24px] bg-[#041e23] border-[#0e464f] border-[1px] h-fit min-h-[100vh]">
       <TicketFormHeader title="Ready" step={3} />
