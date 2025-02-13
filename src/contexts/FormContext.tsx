@@ -2,7 +2,14 @@ import { createContext, ReactNode, useState, useEffect } from "react";
 import { TFormContext, TTicketDetails, TErrors } from "../types/";
 import { validateEmail, validateURL } from "../utils/validate";
 
-export const FormContext = createContext<TFormContext | null>(null);
+export const FormContext = createContext<TFormContext>({
+  formData: {} as TTicketDetails,
+  setFormData: () => {},
+  errors: {} as TErrors,
+  setErrors: () => {},
+  handleChange: () => {},
+  reset: () => {}
+});
 
 export default function FormContextProvider({ children }: { children: ReactNode }){
   const [formData, setFormData] = useState<TTicketDetails>({} as TTicketDetails);
