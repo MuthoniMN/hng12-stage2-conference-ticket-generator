@@ -47,7 +47,8 @@ export default function FormContextProvider({ children }: { children: ReactNode 
     email: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>
+) => {
     const key = e.target.name;
     const value = e.target.value;
 
