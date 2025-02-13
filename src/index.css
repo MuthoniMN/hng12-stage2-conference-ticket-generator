@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Road+Rage&display=swap');
+@import "tailwindcss";
+
+@theme{
+  --breakpoint-mobile: 375px;
+  --breakpoint-xs: 390px;
+  --breakpoint-desktop: 1440px;
+}
+
+@font-face{
+  font-family: 'JejuMyeongjo';
+  src: url('./assets/fonts/JejuMyeongjo-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  background: radial-gradient(ellipse at bottom, #24A0B566 0, #24A0B500 100%) #02191D;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'JejuMyeongjo';
+}
+
+*{
+  font-family: 'JejuMyeongjo';
+}
+
+.gradient {
+  background: radial-gradient(ellipse at bottom, #24A0B533 0, #24A0B500 100%) #02191D;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.event-gradient {
+  background: radial-gradient(ellipse at bottom, #24A0B533 0, #24A0B500 100%) #0a0c111a;
+}
+
+.roboto{
+  font-family: "Roboto", serif;
+}
+
+.road_rage{
+  font-family: "Road Rage", serif;
+}
+
+.inner_radius{
+  border-radius: -80px;
+}
+
+.ticket-container{
+  background: radial-gradient(ellipse at top, #24a0b580 0, #24a0b500 100%) radial-gradient(ellipse at bottom, #24a0b580 0, #24a0b500 100%) #072c31;
+  border: 1px solid #24a0b5;
+}
+
+
+@media screen and (max-width: 400px) {
+  .gradient {
+    background: #02191D;
+  }
+}
+
