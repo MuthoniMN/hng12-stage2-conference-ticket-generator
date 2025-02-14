@@ -7,13 +7,14 @@ export default function FirstForm({ setTab, hide=false } : { setTab: (i: number)
   const { errors, setErrors, formData, setFormData, reset, handleChange } = useContext(FormContext);
 
   const chooseType = (type: string) => {
-    setFormData({
+    const updated = {
       ...formData,
       type: type
-    })
+    };
+    setFormData(updated)
 
 
-    localStorage.setItem('formData', JSON.stringify(formData));
+    localStorage.setItem('formData', JSON.stringify(updated));
   }
 
   const next = () => {

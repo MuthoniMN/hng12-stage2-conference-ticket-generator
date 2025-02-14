@@ -60,12 +60,14 @@ export default function FormContextProvider({ children }: { children: ReactNode 
       }
     }
 
-    setFormData({
+    const updated = {
       ...formData,
       [key]: key === 'quantity' ? Number(value) : value
-    });
+    };
 
-    localStorage.setItem('formData', JSON.stringify(formData));
+    setFormData(updated);
+
+    localStorage.setItem('formData', JSON.stringify(updated));
   }
 
   const reset = () => {
@@ -79,7 +81,7 @@ export default function FormContextProvider({ children }: { children: ReactNode 
   })
 
 
-    localStorage.setItem('formData', JSON.stringify(formData));
+    localStorage.setItem('formData', '');
   }
 
   return (

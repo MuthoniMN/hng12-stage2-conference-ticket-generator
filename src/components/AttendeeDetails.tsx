@@ -29,12 +29,13 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
       const data = await response.json();
 
       if(data.secure_url){
-        setFormData({
+        const updated = {
           ...formData,
           picture: data.secure_url
-        });
+        };
+        setFormData(updated);
 
-      localStorage.setItem('formData', JSON.stringify(formData));
+      localStorage.setItem('formData', JSON.stringify(updated));
 
         setLoading(false);
       } else {
