@@ -1,6 +1,6 @@
 import { useContext, useState, useRef } from "react";
 import { FormContext } from "../contexts/FormContext";
-import { IoIosWarning } from "react-icons/io";
+import { IoIosWarning, IoMdMail } from "react-icons/io";
 import { FaCheckSquare, FaCloudUploadAlt } from "react-icons/fa";
 import { TTicketDetails } from "../types/";
 
@@ -88,7 +88,7 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
 
   return (
     <>
-    <section className="hidden md:block flex flex-col space-y-[32px] p-[24px] bg-[#08252b] border-[1px] border-[#0e464f] rounded-[32px]">
+    <section className="hidden sm:block flex flex-col space-y-[32px] p-[24px] bg-[#08252b] border-[1px] border-[#0e464f] rounded-[32px]">
       <div className="flex flex-col gap-[32px] py-[16px] px-[24px] md:pt-[24px] md:pb-[48px] rounded-[24px] border-[1px] border-[#07373f] bg-[#052228] justify-between">
         <h3 className="text-[16px] leading-[150%] text-[#fafafa] roboto">Upload Profile Photo</h3>
         <div className="flex gap-[10px] text-center items-center justify-center h-[200px] bg-[#00000033] relative">
@@ -142,7 +142,8 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
         </div>
         <div className="flex flex-col gap-[8px] text-[#fafafa]">
           <label htmlFor="email" className="text-[16px] roboto leading-[150%] text-[#fafafa]">Enter your email</label>
-          <div>
+          <div className="text-white flex gap-[4px]">
+            <IoMdMail />
             <input name="email" type="email" id="email" onChange={handleChange} value={formData.email} placeholder="hello@avioflagoc.io" className="w-full flex gap-8 p-[12px] rounded-[12px] border-[1px] border-[#07373f] text-white" />
             </div>
             {errors.email && <p className="flex gap-4 text-red-500 font-bold items-center">
@@ -161,7 +162,7 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
       </div>
       </section>
       {/* mobile view */}
-       <div className="md:hidden flex flex-col gap-[32px] py-[16px] px-[24px] md:pt-[24px] md:pb-[48px] rounded-[24px] border-[1px] border-[#07373f] bg-[#052228] justify-between">
+       <div className="sm:hidden flex flex-col gap-[32px] py-[16px] px-[24px] md:pt-[24px] md:pb-[48px] rounded-[24px] border-[1px] border-[#07373f] bg-[#052228] justify-between">
         <h3 className="text-[16px] leading-[150%] text-[#fafafa] roboto">Upload Profile Photo</h3>
           <div className="w-[240px] h-[240px] flex flex-col gap-[16px] p-[24px] rounded-[32px] bg-[#0e464f] border-[#24a0b580] border-[4px] items-center justify-center">
             <img src="./cloud-download.png" alt="" />
@@ -169,7 +170,7 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
           </div>
         </div>
       <div className="md:hidden h-[4px] bg-[#07373f] w-full"></div>
-      <form className="md:hidden flex flex-col gap-[12px] text-[#fafafa]">
+      <form className="sm:hidden flex flex-col gap-[12px] text-[#fafafa]">
         <div className="flex flex-col gap-[8px] text-[#fafafa]">
           <label htmlFor="name" className="text-[16px] roboto leading-[150%] text-[#fafafa]">Enter your name</label>
           <input type="text" name="name" id="name" onChange={handleChange} value={formData.name} placeholder="John Doe" className="w-full flex gap-8 p-[12px] rounded-[12px] border-[1px] border-[#07373f]" />
@@ -193,7 +194,7 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
           <textarea name="request" id="request" value={formData.request} onChange={handleChange} className="w-full h-[127px] flex gap-8 p-[12px] rounded-[12px] border-[1px] border-[#07373f] text-white"></textarea>
         </div>
       </form>
-      <div className={`md:hidden flex flex-col lg:flex-row-reverse gap-[16px] lg:gap-[24px]`}>
+      <div className={`sm:hidden flex flex-col lg:flex-row-reverse gap-[16px] lg:gap-[24px]`}>
         <button onClick={() => handleSave()} className="w-full text-center flex gap-[8px] px-[24px] py-[12px] rounded-[8px] bg-[#24a0b5] text-white leading-[150%] justify-center cursor-pointer transition-all ease-in-out duration-200 hover:bg-[#0e4048] hover:font-bold hover:shadow-md">Get My {formData.type} Ticket</button>
         <button onClick={() => setTab(1)} className="w-full text-center flex gap-[8px] px-[24px] py-[12px] rounded-[8px] border-[1px] border-[#24a0b5] text-[#24a0b5] leading-[150%] justify-center cursor-pointer hover:font-bold hover:border-[2px] transition-all ease-in-out duration-200">Back</button>
       </div>
