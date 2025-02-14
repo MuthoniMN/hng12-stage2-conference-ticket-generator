@@ -142,9 +142,9 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
         </div>
         <div className="flex flex-col gap-[8px] text-[#fafafa]">
           <label htmlFor="email" className="text-[16px] roboto leading-[150%] text-[#fafafa]">Enter your email</label>
-          <div className="text-white flex gap-[4px]">
-            <IoMdMail />
-            <input name="email" type="email" id="email" onChange={handleChange} value={formData.email} placeholder="hello@avioflagoc.io" className="w-full flex gap-8 p-[12px] rounded-[12px] border-[1px] border-[#07373f] text-white" />
+          <div className="w-full flex gap-[8px] p-[12px] rounded-[12px] border-[1px] border-[#07373f] text-white">
+            <IoMdMail className="text-lg" />
+            <input name="email" type="email" id="email" onChange={handleChange} value={formData.email} placeholder="hello@avioflagoc.io" />
             </div>
             {errors.email && <p className="flex gap-4 text-red-500 font-bold items-center">
                 <IoIosWarning />
