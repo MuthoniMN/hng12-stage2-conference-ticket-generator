@@ -1,21 +1,13 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { IoIosWarning } from "react-icons/io";
 import { FormContext } from "../contexts/FormContext";
 import { TErrors } from "../types/";
 
 export default function FirstForm({ setTab, hide=false } : { setTab: (i: number) => void, hide?: boolean }){
   const { errors, setErrors, formData, setFormData, reset, handleChange } = useContext(FormContext);
-
-  const chooseType = (type: string) => {
-    const updated = {
-      ...formData,
-      type: type
-    };
-    setFormData(updated)
-
-
-    localStorage.setItem('formData', JSON.stringify(updated));
-  }
+  const freeRef = useRef<HTMLInputElement | null>(null);
+  const regularRef = useRef<HTMLInputElement | null>(null);
+  const vvipRef = useRef<HTMLInputElement | null>(null);
 
   const next = () => {
     setErrors({} as TErrors);
@@ -35,21 +27,24 @@ export default function FirstForm({ setTab, hide=false } : { setTab: (i: number)
       <form className={`${hide &&'lg:hidden'} flex flex-col gap-[8px]`}>
         <label htmlFor="type" className="text-[16px] roboto leading-[150%] text-[#fafafa]">Select Ticket Type</label>
         <div className="p-[16px] flex flex-col lg:flex-row gap-[16px] rounde-[24px] bg-[#052228] border-[1px] border-[#07373f] rounded-[24px]">
-          <div className={`w-full lg:w-3/10 flex flex-col gap-[12px] p-[12px] rounded-[12px] ${ formData.type == 'Free' ? 'bg-[#12464e] border-[1px] border-[#197686]' : 'border-[1px] border-[#197686]'}`} onClick={() => chooseType('Free')}>
+          <input type="radio" value="Free" name="type" ref={freeRef} onChange={handleChange} className="hidden" onFocus={() => (freeRef.current as HTMLInputElement).focus()} />
+          <input type="radio" value="Regular" name="type" ref={regularRef} className="hidden" onChange={handleChange} onFocus={() => (freeRef.current as HTMLInputElement).focus()} />
+          <input type="radio" value="VVIP" name="type" ref={vvipRef} className="hidden" onChange={handleChange} onFocus={() => (vvipRef.current as HTMLInputElement).focus()} />
+          <div className={`w-full lg:w-3/10 flex flex-col gap-[12px] p-[12px] rounded-[12px] ${ formData.type == 'Free' ? 'bg-[#12464e] border-[1px] border-[#197686]' : 'border-[1px] border-[#197686]'}`} onClick={() => (freeRef.current as HTMLInputElement).click()}>
             <h3 className="text-white roboto font-bold text-[24px] leading-[110%]">Free</h3>
             <div>
               <p className="text-[16px] text-[#fafafa] leading-[150%] roboto">Regular Access</p>
               <p className="text-[14px] leading-[150%] text-[#d9d9d9] roboto">20/52</p>
             </div>
           </div>
-          <div className={`w-full lg:w-3/10 flex flex-col gap-[12px] p-[12px] rounded-[12px] ${ formData.type == 'Regular' ? 'bg-[#12464e] border-[1px] border-[#197686]' : 'border-[1px] border-[#197686]'}`} onClick={() => chooseType('Regular')}>
+          <div className={`w-full lg:w-3/10 flex flex-col gap-[12px] p-[12px] rounded-[12px] ${ formData.type == 'Regular' ? 'bg-[#12464e] border-[1px] border-[#197686]' : 'border-[1px] border-[#197686]'}`} onClick={() => (regularRef.current as HTMLInputElement).click()}>
             <h3 className="text-white roboto font-bold text-[24px] leading-[110%]">$150</h3>
             <div>
               <p className="text-[16px] text-[#fafafa] leading-[150%] roboto">VIP Access</p>
               <p className="text-[14px] leading-[150%] text-[#d9d9d9] roboto">20/52</p>
             </div>
           </div>
-          <div className={`w-full lg:w-3/10 flex flex-col gap-[12px] p-[12px] rounded-[12px] ${ formData.type == 'VVIP' ? 'bg-[#12464e] border-[1px] border-[#197686]' : 'border-[1px] border-[#197686]'}`} onClick={() => chooseType('VVIP')}>
+          <div className={`w-full lg:w-3/10 flex flex-col gap-[12px] p-[12px] rounded-[12px] ${ formData.type == 'VVIP' ? 'bg-[#12464e] border-[1px] border-[#197686]' : 'border-[1px] border-[#197686]'}`} onClick={() => (vvipRef.current as HTMLInputElement).click()}>
             <h3 className="text-white roboto font-bold text-[24px] leading-[110%]">$150</h3>
             <div>
               <p className="text-[16px] text-[#fafafa] leading-[150%] roboto">VVIP Access</p>
