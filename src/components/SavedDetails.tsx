@@ -25,28 +25,28 @@ export default function SavedDetails(){
       </div>
       <div className="p-[4px] bg-[#08343c] rounded-[8px] border-[1px] border-[#133d44] divide-y-[1px] divide-[#12464e]">
         <div className="divide-x-[1px] divide-[#12464e] flex gap-[8px] items-center">
-          <div className="flex flex-col gap-[4px] p-[4px] w-[47%]">
+          <div className="flex flex-col gap-[4px] p-[4px] w-[47%] h-full">
             <p className="text-white text-[10px] roboto leading-[150%] text-left">Enter your name</p>
-            <p className="text-white font-bold text-[12px] roboto leading-[150%] text-left overflow-scroll">{ticket.name}</p>
+            <p className="text-white font-bold text-[12px] roboto leading-[150%] text-left w-full">{ticket.name}</p>
           </div>
-          <div className="flex flex-col gap-[4px] p-[4px] w-[47%]">
-            <p className="flex"><span className="text-white text-[10px] roboto leading-[150%] text-left flex">Enter your email</span><span className="self-start">*</span></p>
-            <p className="text-white font-bold text-[12px] roboto leading-[150%] text-left overflow-scroll">{ticket.email}</p>
+          <div className="flex flex-col gap-[4px] p-[4px] w-[47%] h-full">
+            <p className="flex"><span className="text-white text-[10px] roboto leading-[150%] text-left flex">Enter your email</span></p>
+            <p className="text-white font-bold text-[12px] roboto leading-[150%] text-left w-full overflow-hidden text-ellipsis whitespace-nowrap">{ticket.email}</p>
           </div>
         </div>
         <div className="divide-x-[1px] divide-[#12464e] flex gap-[8px] items-center">
-         <div className="flex flex-col gap-[4px] p-[4px] w-[47%]">
+         <div className="flex flex-col gap-[4px] p-[4px] w-[47%] h-full">
             <p className="text-white text-[10px] roboto leading-[150%] text-left">Ticket Type: </p>
             <p className="text-white font-bold text-[12px] roboto leading-[150%] text-left overflow-scroll">{ticket.type}</p>
           </div>
-          <div className="flex flex-col gap-[4px] p-[4px] w-[47%]">
+          <div className="flex flex-col gap-[4px] p-[4px] w-[47%] h-full">
             <p className="text-white text-[10px] roboto leading-[150%] text-left">Ticket for: </p>
             <p className="text-white font-bold text-[12px] roboto leading-[150%] text-left overflow-scroll">{ticket.quantity}</p>
           </div>
         </div>
-        <div className="flex flex-col p-[8px] gap-[4px] justify-center">
+        <div className="flex flex-col p-[8px] gap-[4px] justify-center h-full">
             <p className="text-white text-[10px] roboto leading-[150%] text-left">Special request? </p>
-            <p className="text-white font-bold text-[12px] roboto leading-[150%] text-left">{ticket.request}</p>
+            <p className="text-white font-bold text-[12px] roboto leading-[150%] text-left">{ticket.request || "Not Provided"}</p>
         </div>
       </div>
     </div>

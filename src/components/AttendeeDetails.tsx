@@ -2,7 +2,7 @@ import { useContext, useState, useRef } from "react";
 import { FormContext } from "../contexts/FormContext";
 import { IoIosWarning, IoMdMail } from "react-icons/io";
 import { FaCheckSquare, FaCloudUploadAlt } from "react-icons/fa";
-import { TTicketDetails } from "../types/";
+import { TTicketDetails, TErrors } from "../types/";
 
 export default function AttendeeDetails({ setTab }: { setTab: (e: number) => void }){
   const { formData, handleChange, errors, setErrors, setFormData } = useContext(FormContext);
@@ -74,8 +74,10 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
 
   const handleSave = () => {
     const errs = validate(formData);
-    setErrors({ ...errors, ...errs })
-    if(!errs){
+    setErrors(errs as TErrors);
+    console.log(errors);
+    if(!errs.name || !errs.picture || !errs.email){
+      console.log('next');
       const savedInfo = localStorage.getItem('tickets') ? JSON.parse(localStorage.getItem('tickets') as string) : [];
       
       savedInfo.push(formData);
@@ -145,7 +147,7 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
           <label htmlFor="email" className="text-[16px] roboto leading-[150%] text-[#fafafa]">Enter your email</label>
           <div className="w-full flex gap-[8px] p-[12px] rounded-[12px] border-[1px] border-[#07373f] text-white">
             <IoMdMail className="text-lg" />
-            <input name="email" type="email" id="email" onChange={handleChange} value={formData.email} placeholder="hello@avioflagoc.io" />
+            <input name="email" type="email" id="email" onChange={handleChange} value={formData.email} placeholder="hello@avioflagoc.io" className="w-full" />
             </div>
             {errors.email && <p className="flex gap-4 text-red-500 font-bold items-center">
                 <IoIosWarning />
