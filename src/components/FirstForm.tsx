@@ -4,7 +4,7 @@ import { FormContext } from "../contexts/FormContext";
 import { TErrors } from "../types/";
 
 export default function FirstForm({ setTab, hide=false } : { setTab: (i: number) => void, hide?: boolean }){
-  const { errors, setErrors, formData, setFormData, reset, handleChange } = useContext(FormContext);
+  const { errors, setErrors, formData, reset, handleChange } = useContext(FormContext);
   const freeRef = useRef<HTMLInputElement | null>(null);
   const regularRef = useRef<HTMLInputElement | null>(null);
   const vvipRef = useRef<HTMLInputElement | null>(null);
