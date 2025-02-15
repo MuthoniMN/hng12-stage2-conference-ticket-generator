@@ -73,11 +73,9 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
   }
 
   const handleSave = () => {
-    const errs = validate(formData);
+    const errs: Partial<TErrors> = validate(formData);
     setErrors(errs as TErrors);
-    console.log(errors);
     if(!errs.name || !errs.picture || !errs.email){
-      console.log('next');
       const savedInfo = localStorage.getItem('tickets') ? JSON.parse(localStorage.getItem('tickets') as string) : [];
       
       savedInfo.push(formData);
