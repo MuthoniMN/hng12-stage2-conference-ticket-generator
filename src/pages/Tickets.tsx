@@ -15,7 +15,9 @@ export default function Tickets() {
   const [paginated, setPaginated] = useState<TTicketDetails[]>(tickets.slice(start, end));
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('tickets') as string);
-    setTickets(saved);
+    if(saved !== null){
+      setTickets(saved);
+    }
 
     console.log(saved);
   }, []);
