@@ -27,9 +27,9 @@ export default function FirstForm({ setTab, hide=false } : { setTab: (i: number)
       <form className={`${hide &&'lg:hidden'} flex flex-col gap-[8px]`}>
         <label htmlFor="type" className="text-[16px] roboto leading-[150%] text-[#fafafa]">Select Ticket Type</label>
         <div className="p-[16px] flex flex-col lg:flex-row gap-[16px] rounde-[24px] bg-[#052228] border-[1px] border-[#07373f] rounded-[24px]">
-          <input type="radio" value="Free" name="type" ref={freeRef} onChange={handleChange} className="hidden" onFocus={() => (freeRef.current as HTMLInputElement).focus()} />
-          <input type="radio" value="Regular" name="type" ref={regularRef} className="hidden" onChange={handleChange} onFocus={() => (freeRef.current as HTMLInputElement).focus()} />
-          <input type="radio" value="VVIP" name="type" ref={vvipRef} className="hidden" onChange={handleChange} onFocus={() => (vvipRef.current as HTMLInputElement).focus()} />
+          <input type="radio" value="Free" name="type" ref={freeRef} onChange={handleChange} className="hidden" onFocus={() => (freeRef.current as HTMLInputElement).focus()} aria-describedby="typeError" />
+          <input type="radio" value="Regular" name="type" ref={regularRef} className="hidden" onChange={handleChange} onFocus={() => (freeRef.current as HTMLInputElement).focus()} aria-describedby="typeError" />
+          <input type="radio" value="VVIP" name="type" ref={vvipRef} className="hidden" onChange={handleChange} onFocus={() => (vvipRef.current as HTMLInputElement).focus()} aria-describedby="typeError" />
           <div className={`w-full lg:w-3/10 flex flex-col gap-[12px] p-[12px] rounded-[12px] ${ formData.type == 'Free' ? 'bg-[#12464e] border-[1px] border-[#197686]' : 'border-[1px] border-[#197686]'}`} onClick={() => (freeRef.current as HTMLInputElement).click()}>
             <h3 className="text-white roboto font-bold text-[24px] leading-[110%]">Free</h3>
             <div>
@@ -52,19 +52,19 @@ export default function FirstForm({ setTab, hide=false } : { setTab: (i: number)
             </div>
           </div>
         </div>
-        {errors.type && <p className="flex gap-4 text-red-500 font-bold items-center">
+        {errors.type && <p className="flex gap-4 text-red-500 font-bold items-center" id="typeError" role="alert">
             <IoIosWarning />
             <span>{errors.type}</span>
           </p>}
         <label htmlFor="quantity" className="text-[16px] roboto leading-[150%] text-[#fafafa]">Number of Tickets:</label>
-        <select name="quantity" id="quantity" className="rounded-[12px] p-[12px] border-[1px] border-[#07373f]flex flex-row gap-[8px] items-center text-[#fafafa]" onChange={handleChange} value={formData.quantity}>
+        <select name="quantity" id="quantity" className="rounded-[12px] p-[12px] border-[1px] border-[#07373f]flex flex-row gap-[8px] items-center text-[#fafafa]" onChange={handleChange} value={formData.quantity} aria-describedby="quantityError">
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
           <option value={4}>4</option>
           <option value={5}>5</option>
         </select>
-        {errors.quantity && <p className="flex gap-4 text-red-500 font-bold items-center">
+        {errors.quantity && <p className="flex gap-4 text-red-500 font-bold items-center" id="quantityError" role="alert">
             <IoIosWarning />
             <span>{errors.quantity}</span>
           </p>}

@@ -122,12 +122,12 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
                 const file = e.target.files?.[0];
                 if (file) uploadImage(file);
               }}
-              className="hidden"
+              className="hidden" aria-describedby="pictureError"
             />
           </div>
         </div>
         </div>
-        {errors.picture && <p className="flex gap-4 text-red-500 font-bold items-center">
+        {errors.picture && <p className="flex gap-4 text-red-500 font-bold items-center" id="pictureError">
             <IoIosWarning />
             <span>{errors.picture}</span>
           </p>}
@@ -135,8 +135,8 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
       <form className="flex flex-col gap-[12px] text-[#fafafa]">
         <div className="flex flex-col gap-[8px] text-[#fafafa]">
           <label htmlFor="name" className="text-[16px] roboto leading-[150%] text-[#fafafa]">Enter your name</label>
-          <input type="text" name="name" id="name" onChange={handleChange} value={formData.name} placeholder="John Doe" className="w-full flex gap-8 p-[12px] rounded-[12px] border-[1px] border-[#07373f] text-white" />
-          {errors.name && <p className="flex gap-4 text-red-500 font-bold items-center">
+          <input type="text" name="name" id="name" onChange={handleChange} value={formData.name} placeholder="John Doe" className="w-full flex gap-8 p-[12px] rounded-[12px] border-[1px] border-[#07373f] text-white" aria-describedby="nameError" />
+          {errors.name && <p className="flex gap-4 text-red-500 font-bold items-center" id="nameError" role="alert" >
               <IoIosWarning />
               <span>{errors.name}</span>
             </p>}
@@ -145,9 +145,9 @@ export default function AttendeeDetails({ setTab }: { setTab: (e: number) => voi
           <label htmlFor="email" className="text-[16px] roboto leading-[150%] text-[#fafafa]">Enter your email</label>
           <div className="w-full flex gap-[8px] p-[12px] rounded-[12px] border-[1px] border-[#07373f] text-white">
             <IoMdMail className="text-lg" />
-            <input name="email" type="email" id="email" onChange={handleChange} value={formData.email} placeholder="hello@avioflagoc.io" className="w-full" />
+            <input name="email" type="email" id="email" onChange={handleChange} value={formData.email} placeholder="hello@avioflagoc.io" className="w-full" aria-describedby="emailError" />
             </div>
-            {errors.email && <p className="flex gap-4 text-red-500 font-bold items-center">
+            {errors.email && <p className="flex gap-4 text-red-500 font-bold items-center" id="emailError" role="alert">
                 <IoIosWarning />
                 <span>{errors.email}</span>
               </p>}
