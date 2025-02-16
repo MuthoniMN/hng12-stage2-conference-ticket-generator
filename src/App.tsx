@@ -1,16 +1,16 @@
-import Navigation from "./components/Navigation";
-import TicketForm from "./components/TicketForm";
-import FormContextProvider from "./contexts/FormContext";
+import { Routes, Route } from "react-router";
+import Index from "./pages/Index";
+import Tickets from "./pages/Tickets";
+import About from "./pages/About";
 
 function App() {
 
   return (
-    <FormContextProvider>
-    <section className="lg:py-[112px] py-[64px] px-[20px] flex-col md:gap-[80px] gap-[48px] mobile:w-[375px] w-[100vw] gradient bg-no-repeat bg-cover h-fit">
-      <Navigation />
-      <TicketForm />
-   </section>
-   </FormContextProvider>
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/tickets" element={<Tickets />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
   )
 }
 

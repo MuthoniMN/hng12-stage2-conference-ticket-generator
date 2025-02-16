@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { TTicketDetails } from "../types/";
 
-export default function SavedDetails(){
-  const [ticket, setTicket] = useState<TTicketDetails>({} as TTicketDetails);
+export default function SavedDetails({ tick } : { tick?: TTicketDetails }){
+  const [ticket, setTicket] = useState<TTicketDetails>(tick || {} as TTicketDetails);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('recent') as string);
+    if(!tick){
+      const saved = JSON.parse(localStorage.getItem('recent') as string);
 
-    setTicket(saved);
-  }, [])
+      setTicket(saved);
+    }
+  }, [tick])
   
   return (
     <section className="w-full p-[14px] rounded-[16px] bg-[#031e21] border-[1px] border-[#24a0b51a] backdrop-blur-[2px] h-full">

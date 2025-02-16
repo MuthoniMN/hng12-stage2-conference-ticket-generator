@@ -1,4 +1,5 @@
 import { FaArrowRight } from "react-icons/fa6";
+import { NavLink } from "react-router";
 
 export default function Navigation(){
   return (
@@ -6,15 +7,38 @@ export default function Navigation(){
       <img src="./logo.png" alt="Tic - Buy Event Tickets" />
       <nav className="hidden md:block">
         <ul className="flex gap-[16px] items-center">
-          <li className="p-[10px] text-[18px] text-white hover:underline transition-all ease-in-out duration-300 cursor-pointer">Events</li>
-          <li className="p-[10px] text-[18px] text-[#b3b3b3] hover:underline transition-all ease-in-out duration-300 hover:text-white cursor-pointer">My Tickets</li>
-          <li className="p-[10px] text-[18px] text-[#b3b3b3] hover:underline transition-all ease-in-out duration-300 hover:text-white cursor-pointer">About Project</li>
+          <li className="p-[10px] text-[18px] text-white hover:underline transition-all ease-in-out duration-300 cursor-pointer">
+            <NavLink to="/"   style={({ isActive }) => ({
+                color: isActive ? "white" : "#b3b3b3",
+              })}
+            >
+              Events
+            </NavLink>
+          </li>
+          <li className="p-[10px] text-[18px] text-[#b3b3b3] hover:underline transition-all ease-in-out duration-300 hover:text-white cursor-pointer">
+            <NavLink to="/tickets"   style={({ isActive }) => ({
+                color: isActive ? "white" : "#b3b3b3",
+              })}
+>
+              My Tickets
+            </NavLink>
+          </li>
+          <li className="p-[10px] text-[18px] text-[#b3b3b3] hover:underline transition-all ease-in-out duration-300 hover:text-white cursor-pointer">
+          <NavLink to="/about"   style={({ isActive }) => ({
+                color: isActive ? "white" : "#b3b3b3",
+              })}
+>
+            About Project
+          </NavLink>
+          </li>
         </ul>
       </nav>
-      <button className="bg-[#ffffff] py-[12px] px-[16px] md:py-[16px] md:px-[24px] flex justify-center items-center gap-[8px] rounded-[12px] border-[1px] border-[#D5EA001A] text-[#0a0c11] text-[16px] leading-[20px] transition-all ease-in-out duration-400 hover:font-bold hover:shadow-lg cursor-pointer">
-        <p>MY TICKETS</p>
-        <FaArrowRight />
-      </button>
+      <NavLink to="/tickets">
+        <button className="bg-[#ffffff] py-[12px] px-[16px] md:py-[16px] md:px-[24px] flex justify-center items-center gap-[8px] rounded-[12px] border-[1px] border-[#D5EA001A] text-[#0a0c11] text-[16px] leading-[20px] transition-all ease-in-out duration-400 hover:font-bold hover:shadow-lg cursor-pointer">
+          <p>MY TICKETS</p>
+          <FaArrowRight />
+        </button>
+      </NavLink>
     </div>
   );
 }
