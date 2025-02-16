@@ -53,10 +53,10 @@ export default function Tickets() {
                 <BarCode />
               </TicketContainer>
             ))) : (
-            <section className="w-full text-center h-[80%] flex justify-center items-center gap-[16px]">
-              <h1>No Available Tickets!</h1>
+            <section className="w-full text-center h-[80%] flex flex-col justify-center items-center gap-[16px] text-white">
+              <h1 className="text-white text-[24px] text-center font-bold">No Available Tickets!</h1>
               <p>You've not created a ticket yet</p>
-              <button>Create Ticket</button>
+              <button className="w-full text-center flex gap-[8px] px-[24px] py-[12px] rounded-[8px] bg-[#24a0b5] text-white leading-[150%] justify-center cursor-pointer transition-all ease-in-out duration-200 hover:bg-[#0e4048] hover:font-bold hover:shadow-md">Create Ticket</button>
             </section>
           )
         }
