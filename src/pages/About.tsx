@@ -10,9 +10,9 @@ export default function About () {
         <p> Ticz is a conference ticketing platform that allows you to get ickets for your favorite upcoming conferences </p>
         <p>With ticz, you can: </p>
         <ul>
-          <li className="flex gap-4"><FaCheck className="text-emerald-500 text-lg" /> Stay updated on upcoming events</li>
-          <li className="flex gap-4"><FaCheck className="text-emerald-500 text-lg" /> Buy tickets at the best prices</li>
-          <li className="flex gap-4"><FaCheck className="text-emerald-500 text-lg" /> Download your tickets for the conference</li>
+          <li className="flex gap-4 items-center"><FaCheck className="text-emerald-500 text-lg" /> Stay updated on upcoming events</li>
+          <li className="flex gap-4 items-center"><FaCheck className="text-emerald-500 text-lg" /> Buy tickets at the best prices</li>
+          <li className="flex gap-4 items-center"><FaCheck className="text-emerald-500 text-lg" /> Download your tickets for the conference</li>
         </ul>
       </section>
     </section>

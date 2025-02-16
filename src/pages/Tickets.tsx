@@ -54,7 +54,7 @@ export default function Tickets() {
                 <BarCode />
               </TicketContainer>
             ))) : (
-            <section className="w-full text-center h-[80%] flex flex-col justify-center items-center gap-[16px] text-white">
+            <section className="w-full text-center h-[80vh] flex flex-col justify-center items-center gap-[16px] text-white">
               <h1 className="text-white text-[24px] text-center font-bold">No Available Tickets!</h1>
               <p>You've not created a ticket yet</p>
               <NavLink to="/">
