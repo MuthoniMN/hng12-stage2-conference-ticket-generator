@@ -6,6 +6,7 @@ import SavedDetails from '../components/SavedDetails';
 import BarCode from "../components/BarCode";
 import TicketContainer from '../components/TicketContainer';
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
+import { NavLink } from "react-router";
 
 export default function Tickets() {
   const [tickets, setTickets] = useState<TTicketDetails[]>([]);
@@ -56,11 +57,14 @@ export default function Tickets() {
             <section className="w-full text-center h-[80%] flex flex-col justify-center items-center gap-[16px] text-white">
               <h1 className="text-white text-[24px] text-center font-bold">No Available Tickets!</h1>
               <p>You've not created a ticket yet</p>
-              <button className="w-full text-center flex gap-[8px] px-[24px] py-[12px] rounded-[8px] bg-[#24a0b5] text-white leading-[150%] justify-center cursor-pointer transition-all ease-in-out duration-200 hover:bg-[#0e4048] hover:font-bold hover:shadow-md">Create Ticket</button>
+              <NavLink to="/">
+                <button className="w-full text-center flex gap-[8px] px-[24px] py-[12px] rounded-[8px] bg-[#24a0b5] text-white leading-[150%] justify-center cursor-pointer transition-all ease-in-out duration-200 hover:bg-[#0e4048] hover:font-bold hover:shadow-md">Create Ticket</button>
+              </NavLink>
             </section>
           )
         }
         </section>
+        { tickets.length > 0 && (
         <div className="flex gap-[4px] items-center w-full justify-end px-[48px] py-[12px]">
             <button onClick={() => prev()} className="bg-[#ffffff] py-[6px] px-[8px] flex justify-center items-center gap-[8px] rounded-[12px] border-[1px] border-[#D5EA001A] text-[#0a0c11] text-[16px] leading-[20px] transition-all ease-in-out duration-400 hover:font-bold hover:shadow-lg cursor-pointer">
               <FaAngleLeft />
@@ -75,7 +79,8 @@ export default function Tickets() {
             <button onClick={() => next()} className="bg-[#ffffff] py-[6px] px-[8px] flex justify-center items-center gap-[8px] rounded-[12px] border-[1px] border-[#D5EA001A] text-[#0a0c11] text-[16px] leading-[20px] transition-all ease-in-out duration-400 hover:font-bold hover:shadow-lg cursor-pointer">
               <FaAngleRight />
             </button>
-        </div>
+        </div>)
+        }
       </section>
     </section>
   );
